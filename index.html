@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Исторические события по дате</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Исторические события</h1>
+            <p>Найдите важные события по конкретной дате с использованием Wikipedia</p>
+        </header>
 
+        <section class="search-section">
+            <div class="search-form">
+                <div class="form-group">
+                    <label for="day-input">День:</label>
+                    <select id="day-input" class="day-input">
+                        <option value="">Выберите день</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="month-select">Месяц:</label>
+                    <select id="month-select" class="month-select">
+                        <option value="">Выберите месяц</option>
+                        <option value="1">Январь</option>
+                        <option value="2">Февраль</option>
+                        <option value="3">Март</option>
+                        <option value="4">Апрель</option>
+                        <option value="5">Май</option>
+                        <option value="6">Июнь</option>
+                        <option value="7">Июль</option>
+                        <option value="8">Август</option>
+                        <option value="9">Сентябрь</option>
+                        <option value="10">Октябрь</option>
+                        <option value="11">Ноябрь</option>
+                        <option value="12">Декабрь</option>
+                    </select>
+                </div>
+                <button id="search-btn" class="search-btn">Найти события</button>
+            </div>
+            <div class="search-info">
+                <p>📅 Выберите день и месяц для поиска исторических событий</p>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <div class="results-header">
+                <h2 id="results-title" class="results-title">Результаты поиска</h2>
+                <div class="results-count">
+                    Найдено событий: <span id="events-count">0</span>
+                </div>
+            </div>
+            
+            <div class="events-container">
+                <div id="events-list" class="events-list">
+                    <div class="welcome-message">
+                        <h3>Добро пожаловать!</h3>
+                        <p>Выберите день и месяц, чтобы увидеть исторические события, произошедшие в эту дату.</p>
+                        <p>Данные загружаются из Wikipedia.</p>
+                    </div>
+                </div>
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Загрузка событий из Wikipedia...</p>
+                </div>
+                <div id="no-results" class="no-results hidden">
+                    <p>По выбранной дате событий не найдено</p>
+                </div>
+                <div id="error-message" class="error-message hidden">
+                    <p>Произошла ошибка при загрузке данных. Пожалуйста, попробуйте позже.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2024 Исторический архив. Данные предоставлены Wikipedia.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
