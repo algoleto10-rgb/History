@@ -1,28 +1,30 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Исторические события по дате</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <h1>Исторические события</h1>
+            <h1><i class="fas fa-history"></i> Исторические события</h1>
             <p>Найдите важные события по конкретной дате с использованием Wikipedia</p>
         </header>
 
         <section class="search-section">
             <div class="search-form">
                 <div class="form-group">
-                    <label for="day-input">День:</label>
+                    <label for="day-input"><i class="fas fa-calendar-day"></i> День:</label>
                     <select id="day-input" class="day-input">
                         <option value="">Выберите день</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="month-select">Месяц:</label>
+                    <label for="month-select"><i class="fas fa-calendar-alt"></i> Месяц:</label>
                     <select id="month-select" class="month-select">
                         <option value="">Выберите месяц</option>
                         <option value="1">Январь</option>
@@ -39,26 +41,99 @@
                         <option value="12">Декабрь</option>
                     </select>
                 </div>
-                <button id="search-btn" class="search-btn">Найти события</button>
+                <div class="form-group">
+                    <label for="year-input"><i class="fas fa-calendar"></i> Год:</label>
+                    <select id="year-input" class="year-input">
+                        <option value="">Выберите год</option>
+                    </select>
+                </div>
+                <button id="search-btn" class="search-btn">
+                    <i class="fas fa-search"></i> Найти события
+                </button>
             </div>
+            
+            <div class="filters-container">
+                <h3><i class="fas fa-filter"></i> Фильтры событий</h3>
+                <div class="filters-form">
+                    <div class="filter-group">
+                        <label for="country-filter"><i class="fas fa-globe"></i> Страна:</label>
+                        <select id="country-filter" class="country-filter">
+                            <option value="">Все страны</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="category-filter"><i class="fas fa-tag"></i> Тематика:</label>
+                        <select id="category-filter" class="category-filter">
+                            <option value="">Все темы</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="scale-filter"><i class="fas fa-expand-alt"></i> Масштаб:</label>
+                        <select id="scale-filter" class="scale-filter">
+                            <option value="">Любой масштаб</option>
+                            <option value="global">Мировой</option>
+                            <option value="regional">Региональный</option>
+                            <option value="national">Национальный</option>
+                            <option value="local">Локальный</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="period-filter"><i class="fas fa-clock"></i> Период:</label>
+                        <select id="period-filter" class="period-filter">
+                            <option value="">Все периоды</option>
+                            <option value="ancient">Древний мир</option>
+                            <option value="medieval">Средневековье</option>
+                            <option value="renaissance">Возрождение</option>
+                            <option value="modern">Новое время</option>
+                            <option value="contemporary">Новейшее время</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="filters-actions">
+                    <button id="apply-filters" class="apply-filters">
+                        <i class="fas fa-check"></i> Применить фильтры
+                    </button>
+                    <button id="reset-filters" class="reset-filters">
+                        <i class="fas fa-redo"></i> Сбросить фильтры
+                    </button>
+                    <button id="toggle-filters" class="toggle-filters">
+                        <i class="fas fa-sliders-h"></i> 
+                    </button>
+                </div>
+            </div>
+            
             <div class="search-info">
-                <p>📅 Выберите день и месяц для поиска исторических событий</p>
+                <p><i class="fas fa-info-circle"></i> Выберите день, месяц и год для поиска исторических событий</p>
             </div>
         </section>
 
         <section class="results-section">
             <div class="results-header">
-                <h2 id="results-title" class="results-title">Результаты поиска</h2>
-                <div class="results-count">
-                    Найдено событий: <span id="events-count">0</span>
+                <div class="results-header-left">
+                    <h2 id="results-title" class="results-title">Результаты поиска</h2>
+                    <div class="active-filters" id="active-filters"></div>
+                </div>
+                <div class="results-header-right">
+                    <div class="results-count">
+                        <i class="fas fa-chart-bar"></i> Найдено событий: <span id="events-count">0</span>
+                    </div>
+                    <div class="sort-controls">
+                        <label for="sort-select"><i class="fas fa-sort"></i> Сортировка:</label>
+                        <select id="sort-select" class="sort-select">
+                            <option value="year-asc">По году (возрастание)</option>
+                            <option value="year-desc">По году (убывание)</option>
+                            <option value="relevance">По релевантности</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             
             <div class="events-container">
                 <div id="events-list" class="events-list">
                     <div class="welcome-message">
-                        <h3>Добро пожаловать!</h3>
-                        <p>Выберите день и месяц, чтобы увидеть исторические события, произошедшие в эту дату.</p>
+                        <h3><i class="fas fa-hand-sparkles"></i> Добро пожаловать!</h3>
+                        <p>Выберите день, месяц и год, чтобы увидеть исторические события, произошедшие в эту дату.</p>
+                        <p>Используйте фильтры для уточнения поиска по странам, тематике и масштабу событий.</p>
                         <p>Данные загружаются из Wikipedia.</p>
                     </div>
                 </div>
@@ -67,16 +142,16 @@
                     <p>Загрузка событий из Wikipedia...</p>
                 </div>
                 <div id="no-results" class="no-results hidden">
-                    <p>По выбранной дате событий не найдено</p>
+                    <p><i class="far fa-frown"></i> По выбранной дате событий не найдено</p>
                 </div>
                 <div id="error-message" class="error-message hidden">
-                    <p>Произошла ошибка при загрузке данных. Пожалуйста, попробуйте позже.</p>
+                    <p><i class="fas fa-exclamation-triangle"></i> Произошла ошибка при загрузке данных. Пожалуйста, попробуйте позже.</p>
                 </div>
             </div>
         </section>
 
         <footer class="footer">
-            <p>&copy; 2024 Исторический архив. Данные предоставлены Wikipedia.</p>
+            <p><i class="fas fa-copyright"></i> 2024 Исторический архив. Данные предоставлены Wikipedia.</p>
         </footer>
     </div>
 
